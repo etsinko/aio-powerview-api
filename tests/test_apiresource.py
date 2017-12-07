@@ -25,7 +25,7 @@ class TestApiResource(unittest.TestCase):
         self.resource = self.get_resource(self.loop, self.websession)
 
     def tearDown(self):
-        self.websession.close()
+        self.loop.run_until_complete(self.websession.close())
 
     def test_id_property(self):
         """Test id property."""

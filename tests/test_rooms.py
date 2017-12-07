@@ -21,7 +21,7 @@ class TestRooms(unittest.TestCase):
         self.rooms = Rooms('127.0.0.1', self.loop, self.websession)
 
     def tearDown(self):
-        self.websession.close()
+        self.loop.run_until_complete(self.websession.close())
 
     @aioresponses()
     def test_get_resources_200(self, mocked):
